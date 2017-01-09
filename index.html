@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+
+	<body ng-app="app">
+		<div ng-controller="ExerciseController as ctrl">
+			<div class="page-header">
+				<h1 class="color-txt" id="fadetitle">EXERCISES</h1>
+			</div>
+			<div class="container bg-div">
+				<div class="row">
+					<div class="col-md-1"></div>
+					<div class="col-md-5 drop-shadow round-div">
+						<table class="table">
+							<thead>
+								<tr><th colspan="2"><h4 class="color-txt">Details:</h4></th></tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="color-txt">name:</td>
+									<td><input type="text" onclick="select()" ng-model="currentExercise.name"/></th>
+								</tr>
+								<tr>
+									<td class="color-txt">category:</td>
+									<td>
+										<select name="categorySel" ng-model="currentExercise.category">
+											<option value="">Select Category</option>
+											<option value="cardio">Cardio</option>
+											<option value="strength">Strength</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td class="color-txt">id:</td>
+									<td><input type="text" ng-model="currentExercise.id" readonly="true" /></td></th>
+								</tr>
+							</tbody>
+						</table>
+						<div class="row">
+							<div class="col-12 text-center">
+								<div class="btn-group">
+									<input type="button" ng-click="searchEx(currentExercise)"
+										value="Search Name" class="btn btn-default btn-round btn-sm"/>
+									<input type="button" ng-click="removeEx(currentExercise)"
+										value="Remove" class="btn btn-default btn-sm"/>
+									<input type="button" ng-click="modifyEx(currentExercise)"
+										value="Save" class="btn btn-default btn-sm"/>
+									<input type="button" ng-click="insertEx(currentExercise)"
+										value="Add" class="btn btn-default btn-round btn-sm"/>
+								</div>
+							</div>
+						</div>
+						<br>
+					</div>
+					<div class="col-md-2"></div>
+					<div class="col-md-3 drop-shadow round-div" ng-if="exerciseList[0]!==undefined">
+						<h4 class="text-center color-txt"><b>Exercise List</b></h4>
+						<p class="text-center">
+							<span class="color-txt">Sort by:</span>
+							<select ng-model="predicate">
+								<option value='id'>id</option>
+								<option value='name.toString()'>name</option>
+								<option value='category'>category</option>
+							</select>
+						</p>
+						<div class="list-group text-center" id="scrolling">
+							<a href="" ng-repeat="exercise in exerciseList | orderBy:predicate" ng-click="update(exercise)"
+								class="list-group-item list-group-item-action">
+								{{ exercise.name }}
+							</a>
+						</div>
+					</div>
+					<div class="col-md-1"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,70 @@
+body {
+	background-color: #363636;
+}
+
+th {
+	text-align: center;
+}
+
+h1 {
+	text-align: center;
+	font-weight: bolder;
+	font-family: sans-serif;
+	text-shadow: 3px 3px black;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes expand {
+	from { max-height: 10vh; }
+	to { max-height: 150vh; }
+}
+
+#scrolling {
+	overflow-y: auto;
+	max-height: 55vh;
+}
+
+#fadetitle {
+	opacity: 0;
+	animation: fadein;
+	animation-duration: 1s;
+	animation-fill-mode: forwards;
+	animation-delay: .5s;
+}
+
+.round-div {
+	background-color: #242F40;
+	border: 2px solid #FFFFFF;
+	border-radius: 10px;
+	opacity: 0;
+	animation: fadein 1.5s;
+	animation-delay: .2s;
+	animation-fill-mode: forwards;
+}
+
+.bg-div {
+	padding: 25px;
+	border-radius: 15px;
+	border: 3px solid #FFFFFF;
+	background-color: #CCA43B;
+    animation: expand 3.5s;
+    animation-fill-mode: forwards;
+    overflow: hidden;
+}
+
+.color-txt {
+	color: #E5E5E5;
+	font-family: "Courier New", Courier, monospace;
+}
+
+.btn-round {
+	border-radius: 10px;
+}
+
+.drop-shadow {
+	box-shadow: 5px 5px 10px #222222;
+}
